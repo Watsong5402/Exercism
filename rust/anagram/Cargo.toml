@@ -1,0 +1,9 @@
+[package]
+edition = "2018"
+name = "anagram"
+version = "0.0.0"
+
+[dependencies]
+itertools = "0.10.0"
+stringsort = "2.0.0"
+unicase = "2.6.0"
