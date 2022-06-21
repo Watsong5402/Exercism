@@ -1,5 +1,6 @@
 // @ts-check
 
+import { assert } from "console";
 import { createDecipheriv } from "crypto";
 
 /**
@@ -40,8 +41,8 @@ export function threeOfEachThree(deck) {
  * @returns {number[]} deck with only two middle cards
  */
 export function middleTwo(deck) {
-  const half = Math.floor((deck.length) / 2);
-  const out = [deck[half-1], deck[half]];
+  const half = Math.floor(deck.length / 2);
+  const out = [deck[half - 1], deck[half]];
   return out;
 }
 
@@ -54,10 +55,10 @@ export function middleTwo(deck) {
  */
 
 export function sandwichTrick(deck) {
-  let bumped_left = deck.shift();
-  let bumped_right = deck.unshift();
-  
-  return [bumped_left, bumped_right];
+  const right_pop = deck.pop();
+  const left_pop = deck.shift();
+  deck.splice(Math.floor(deck.length / 2), 0, right_pop, left_pop);
+  return deck;
 }
 
 /**
@@ -68,7 +69,7 @@ export function sandwichTrick(deck) {
  * @returns {number[]} deck with only 2s
  */
 export function twoIsSpecial(deck) {
-  throw new Error("Implement the twoIsSpecial function");
+  return deck.filter((card) => card === 2);
 }
 
 /**
@@ -79,7 +80,8 @@ export function twoIsSpecial(deck) {
  * @returns {number[]} ordered deck
  */
 export function perfectlyOrdered(deck) {
-  throw new Error("Implement the perfectlyOrdered function");
+  const sortNumbersAsc = (array) => (array.sort((a, b) => a - b));
+  return sortNumbersAsc(deck);
 }
 
 /**
@@ -90,5 +92,5 @@ export function perfectlyOrdered(deck) {
  * @returns {number[]} reordered deck
  */
 export function reorder(deck) {
-  throw new Error("Implement the reorder function");
+  return deck.reverse();
 }

@@ -1,3 +1,16 @@
+/// <reference path="./global.d.ts" />
+
+import { promises } from "stream";
+
+// @ts-check
+//
+// The lines above enable type checking for this file. Various IDEs interpret
+// the @ts-check and reference directives. Together, they give you helpful
+// autocompletion when implementing this exercise. You don't need to understand
+// them in order to use it.
+//
+// In your own projects, files, and code, you can play with @ts-check as well.
+
 export class TranslationService {
   /**
    * Creates a new service
@@ -17,7 +30,9 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   free(text) {
-    return this.api.fetch(text).then((res) => res.translation);
+    const translationPromise = this.api.fetch(text);
+    const stringPromise = translationPromise.then((res) => res.translation);
+    return stringPromise;
   }
 
   /**
@@ -31,10 +46,9 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
-    if (texts.length === 0) {
-      return Promise.reject(new BatchIsEmpty());
-    }
-    return Promise.all(texts.map((text) => this.free(text)));
+    let translationPromises = texts.map((text) => {
+      let translationPromise = this.free(text);
+    });
   }
 
   /**
