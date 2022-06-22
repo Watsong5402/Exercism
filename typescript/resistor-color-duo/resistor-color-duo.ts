@@ -21,6 +21,6 @@ export function decodedValue(colors: string[]) {
     .reverse()
     .map((color) => colorDict[color])
     .reduce(
-      (sum: number, ele: number, i: number) => sum + ele * Math.pow(10, i)
+      (sum, ele, i) => sum + ele * Math.pow(10, i)
     );
 }
