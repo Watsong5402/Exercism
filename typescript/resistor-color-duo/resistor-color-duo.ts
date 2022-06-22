@@ -24,12 +24,3 @@ export function decodedValue(colors: string[]) {
       (sum: number, ele: number, i: number) => sum + ele * Math.pow(10, i)
     );
 }
-
-/*
-let sum: number = 0;
-  for (let i = 0; i < backwordColors.length; i++) {
-    let colorValue = colorDict[backwordColors[i]];
-    sum += colorValue * Math.pow(10, i);
-  }
-return sum;
-*/
