@@ -2,7 +2,8 @@
  * This stub is provided to make it straightforward to get started.
  */
 
-export function twoFer(): string {
+export function twoFer(name?: string): string {
+  return `One for ${name || 'you'}, one for me.`;
   // ^                 ^   ^ this is called a return type; it's the type of the
   // ^                 ^     value that is returned from this function
   // ^                 ^
