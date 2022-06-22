@@ -4,23 +4,32 @@ export function decodedValue(colors: string[]) {
   }
 
   const colorDict: ColorDictionary = {
-    'black': 0,
-    'brown': 1,
-    'red': 2,
-    'orange': 3,
-    'yellow': 4,
-    'green': 5,
-    'blue': 6,
-    'violet': 7,
-    'grey': 8,
-    'white': 9,
+    black: 0,
+    brown: 1,
+    red: 2,
+    orange: 3,
+    yellow: 4,
+    green: 5,
+    blue: 6,
+    violet: 7,
+    grey: 8,
+    white: 9,
   };
 
-  let backwordColors = colors.slice(0, 2).reverse();
-  let sum: number = 0;
+  return colors
+    .slice(0, 2)
+    .reverse()
+    .map((color) => colorDict[color])
+    .reduce(
+      (sum: number, ele: number, i: number) => sum + ele * Math.pow(10, i)
+    );
+}
+
+/*
+let sum: number = 0;
   for (let i = 0; i < backwordColors.length; i++) {
     let colorValue = colorDict[backwordColors[i]];
     sum += colorValue * Math.pow(10, i);
   }
-  return sum;
-}
+return sum;
+*/
